@@ -29,6 +29,7 @@ pipx ensurepath
 copier copy https://github.com/ArkanaDigital/addons-repo-template.git some-repo
 # Commit that
 cd some-repo
+git init
 git add .
 pre-commit install
 pre-commit run -a
@@ -43,6 +44,8 @@ cd some-repo
 copier update
 # Reformat updated files
 pre-commit run
+#add new file to repository
+git add *
 # Commit update
 git commit -am 'Updated from template'
 # Reformat all other files, in case some pre-commit configuration was updated
