@@ -7,14 +7,13 @@ on:
   push:
     branches:
       - "{{ odoo_version }}"
-      - "{{ odoo_version }}-ocabot-*"
 
 jobs:
   pre-commit:
 {%- if odoo_version < 14 %}
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
 {%- else %}
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
 {%- endif %}
     steps:
       - uses: actions/checkout@v3
