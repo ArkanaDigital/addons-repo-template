@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - "{{ odoo_version }}"
-      - "{{ odoo_version }}-ocabot-*"
 
 {%
 set IMAGES = {
@@ -33,7 +32,7 @@ set IMAGES = {
 -%}
 jobs:
   unreleased-deps:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Detect unreleased dependencies
     steps:
       - uses: actions/checkout@v3
@@ -51,9 +50,9 @@ jobs:
           done
   test:
 {%- if odoo_version < 14 %}
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
 {%- else %}
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
 {%- endif %}
     container: {% raw %}${{ matrix.container }}{% endraw %}
     name: {% raw %}${{ matrix.name }}{% endraw %}
