@@ -1,4 +1,4 @@
-# OCA Addons Repo Template
+# Arkana Addons Repo Template Forked from OCA
 
 This is a template created to make easier the task of maintaining OCA addon
 repositories.
@@ -26,7 +26,7 @@ pipx install copier
 pipx install pre-commit
 pipx ensurepath
 # Clone this template and answer its questions
-copier copy https://github.com/OCA/oca-addons-repo-template.git some-repo
+copier copy https://github.com/ArkanaDigital/addons-repo-template.git some-repo
 # Commit that
 cd some-repo
 git add .
