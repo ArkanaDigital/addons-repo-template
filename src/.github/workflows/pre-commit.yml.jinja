@@ -11,9 +11,9 @@ on:
 jobs:
   pre-commit:
 {%- if odoo_version < 14 %}
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
 {%- else %}
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
 {%- endif %}
     steps:
       - uses: actions/checkout@v3
