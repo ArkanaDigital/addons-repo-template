@@ -32,7 +32,7 @@ set IMAGES = {
 -%}
 jobs:
   unreleased-deps:
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
     name: Detect unreleased dependencies
     steps:
       - uses: actions/checkout@v3
@@ -50,9 +50,9 @@ jobs:
           done
   test:
 {%- if odoo_version < 14 %}
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
 {%- else %}
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
 {%- endif %}
     container: {% raw %}${{ matrix.container }}{% endraw %}
     name: {% raw %}${{ matrix.name }}{% endraw %}
