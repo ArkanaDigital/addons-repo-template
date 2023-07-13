@@ -31,6 +31,7 @@ copier copy --UNSAFE https://github.com/ArkanaDigital/addons-repo-template.git s
 cd some-repo
 git init
 git add .
+git add .*
 pre-commit install
 pre-commit run -a
 git commit -am 'Hello world 🖖'
