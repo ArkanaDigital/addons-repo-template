@@ -72,7 +72,6 @@ jobs:
             include: "{{ group }}"
             name: test with OCB
             {%- endif %}
-            makepot: "{{ github_enable_makepot | bool | lower }}"
         {%- endfor %}
             {%- if odoo_test_flavor in ["Odoo", "Both"] %}
           - container: {{ IMAGES["odoo"][odoo_version] }}
@@ -84,7 +83,6 @@ jobs:
             exclude: "{{ rebel_module_groups|join(',') }}"
             name: test with OCB
             {%- endif %}
-            makepot: "{{ github_enable_makepot | bool | lower }}"
         {%- else %}
         {#- If all modules can get along, we test and generate .pot all at once #}
         include:
@@ -96,7 +94,6 @@ jobs:
           - container: {{ IMAGES["ocb"][odoo_version] }}
             name: test with OCB
             {%- endif %}
-            makepot: "{{ github_enable_makepot | bool | lower }}"
         {%- endif %}
     services:
       postgres:
@@ -141,11 +138,3 @@ jobs:
         run: oca_init_test_database
       - name: Run tests
         run: oca_run_tests
-      {%- if github_enable_codecov %}
-      - uses: codecov/codecov-action@v1
-      {%- endif %}
-      {% raw -%}
-      - name: Update .pot files
-        run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
-      {%- endraw %}
-        if: {{ "${{" }} matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == '{{ org_slug }}' {{ "}}" }}
