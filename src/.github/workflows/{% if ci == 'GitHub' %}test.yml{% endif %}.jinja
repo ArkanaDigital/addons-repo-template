@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - "{{ odoo_version }}"
+      - "{{ odoo_version }}-staging*"
 
 {%
 set IMAGES = {
