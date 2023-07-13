@@ -157,18 +157,6 @@ github_check_license:
   help: GitHub action checks the manifest license?
   when: *ci_is_github
 
-github_enable_codecov:
-  type: bool
-  default: yes
-  help: GitHub action runs codecov/codecov-action?
-  when: *ci_is_github
-
-github_enable_makepot:
-  type: bool
-  default: yes
-  help: GitHub action updates .pot files?
-  when: *ci_is_github
-
 github_enable_stale_action:
   type: bool
   default: yes
