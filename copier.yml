@@ -20,7 +20,7 @@ _migrations:
 
 odoo_version:
   type: float
-  default: 16.0
+  default: 17.0
   choices:
     - 10.0
     - 11.0
@@ -29,6 +29,7 @@ odoo_version:
     - 14.0
     - 15.0
     - 16.0
+    - 17.0
   help: Which Odoo version are we deploying in this branch?
 
 org_slug:
